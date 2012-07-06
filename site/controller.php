@@ -1,0 +1,27 @@
+<?php
+/**
+ * Subtext Default Site Controller
+ *
+ * @package		Subtext
+ * @subpackage	Component
+ * @license		GNU/GPL
+ */
+
+// NO DIRECT ACCESS
+defined( '_JEXEC' ) or die( 'Restricted access' );
+
+// IMPORT CONTROLLER LIBRARY
+jimport('joomla.application.component.controllerform');
+
+class SubtextController extends JController
+{
+	/**
+	 * Method to display the view
+	 *
+	 * @access	public
+	 */
+	function display()
+	{
+		parent::display();
+	}
+}
