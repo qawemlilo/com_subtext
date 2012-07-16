@@ -101,9 +101,10 @@ class SubtextModelSubtext extends JModelAdmin
     	if(!$order_dir = $mainframe->getUserState($option.'.'.$scope.'.filter_order_Dir')){
     		$order_dir = "ASC";
     	}
-		$sql = "SELECT SQL_CALC_FOUND_ROWS s.*, v.title AS `access` ".
+		$sql = "SELECT SQL_CALC_FOUND_ROWS s.*, v.title AS `access`, u.`name` AS `editor` ".
 		"FROM `{$row->getTableName()}` s ".
-		"LEFT JOIN `#__viewlevels` v ON s.`access` = v.`id`";
+		"LEFT JOIN `#__viewlevels` v ON s.`access` = v.`id` ".
+		"LEFT JOIN `#__users` u ON s.`checked_out` = u.`id`";
 		if(count($filter)){
 			$sql .= " WHERE " . implode(" AND ", $filter);
 		}
