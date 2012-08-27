@@ -3,8 +3,8 @@
 	JHtml::_('behavior.modal');
 	JHtml::_('behavior.tooltip');
 	JHtml::_('behavior.formvalidation');
-	$user	=& JFactory::getUser();
-	$uri	=& JURI::getInstance();
+	$user	= JFactory::getUser();
+	$uri	= JURI::getInstance();
 	$base = $uri->root();
 ?>
 

@@ -35,7 +35,7 @@ class SubtextModelSubtext extends JModel
 		if($id){
 			$this->_db->setQuery($sql);
 			$this->_data = $this->_db->loadObject();
-			$params =& new JRegistry();
+			$params = new JRegistry();
 			$params->loadJSON($this->_data->attribs);
 			$this->_data->params = $params;
 		}else{

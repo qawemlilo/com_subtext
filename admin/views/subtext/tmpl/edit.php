@@ -3,7 +3,7 @@
 	JHtml::_('behavior.modal');
 	JHtml::_('behavior.tooltip');
 	JHtml::_('behavior.formvalidation');
-	$uri =& JURI::getInstance();
+	$uri = JURI::getInstance();
 	$base = $uri->root();
 ?>
 
