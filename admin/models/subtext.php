@@ -31,7 +31,7 @@ class SubtextModelSubtext extends JModelAdmin
      var $_pagination	= null;
  
     /**
-     * Retrieves the Products data
+     * Retrieves the Item data
      * @return object A stdClass object containing the data for a single record.
      */
     public function getData()
@@ -82,7 +82,7 @@ class SubtextModelSubtext extends JModelAdmin
 		return $this->_data;
 	}
     /**
-     * Retrieves the Products data
+     * Retrieves the Item data list
      * @return array Array of objects containing the data from the database.
      */
     public function getList()
