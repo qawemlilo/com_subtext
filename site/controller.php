@@ -20,8 +20,8 @@ class SubtextController extends JController
 	 *
 	 * @access	public
 	 */
-	function display()
+	function display($cachable = false, $urlparams = false)
 	{
-		parent::display();
+		parent::display($cachable, $urlparams);
 	}
 }
