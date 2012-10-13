@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="2.5" method="new">
-	<name>Subtext</name>
+	<name>COM_SUBTEXT</name>
 	<creationDate>2012-03-23</creationDate>
 	<author>Alonzo C. Turner</author>
 	<authorUrl>http://www.subtextproductions.com</authorUrl>
