@@ -11,7 +11,7 @@
 <form action="index.php" method="post" name="adminForm">
 	<input type="hidden" name="option" value="com_subtext" />
 	<input type="hidden" name="scope" value="" />
-	<input type="hidden" name="task" value="" />
+	<input type="hidden" name="task" value="subtext.filter" />
 	<input type="hidden" name="chosen" value="" />
 	<input type="hidden" name="boxchecked" value="0" />
 	<input type="hidden" name="filter_order" value="<? echo $this->filter->filter_order; ?>" />
@@ -37,17 +37,17 @@
 					<input type="checkbox" name="toggle" value="" onclick="checkAll(<? echo count( $this->items ); ?>);" />
 				</th>
 				<th class="title" nowrap="nowrap">
-					<? echo JHTML::_('grid.sort', JText::_('COM_SUBTEXT_LIST_SUBTEXT_NAME_LABEL'), 'subtext_name', $this->filter->filter_order_Dir, $this->filter->filter_order, 'filter'); ?>
+					<? echo JHTML::_('grid.sort', JText::_('COM_SUBTEXT_LIST_SUBTEXT_NAME_LABEL'), 'subtext_name', $this->filter->filter_order_Dir, $this->filter->filter_order, 'subtext.filter'); ?>
 				</th>
 				<th width="5%" nowrap="nowrap">
-					<? echo JHTML::_('grid.sort', JText::_('COM_SUBTEXT_LIST_PUBLISHED_LABEL'), 'published', $this->filter->filter_order_Dir, $this->filter->filter_order, 'filter'); ?>
+					<? echo JHTML::_('grid.sort', JText::_('COM_SUBTEXT_LIST_PUBLISHED_LABEL'), 'published', $this->filter->filter_order_Dir, $this->filter->filter_order, 'subtext.filter'); ?>
 				</th>
 				<th width="10%" nowrap="nowrap">
-					<? echo JHTML::_('grid.sort', JText::_('COM_SUBTEXT_LIST_ORDERING_LABEL'), 'ordering', $this->filter->filter_order_Dir, $this->filter->filter_order, 'filter');?>
+					<? echo JHTML::_('grid.sort', JText::_('COM_SUBTEXT_LIST_ORDERING_LABEL'), 'ordering', $this->filter->filter_order_Dir, $this->filter->filter_order, 'subtext.filter');?>
 					<? echo JHTML::_('grid.order', $this->items, 'filesave.png', 'subtext.saveorder'); ?>
 				</th>
 				<th nowrap="nowrap">
-					<? echo JHTML::_('grid.sort', JText::_('COM_SUBTEXT_LIST_ACCESS_LABEL'), 's.access', $this->filter->filter_order_Dir, $this->filter->filter_order, 'filter'); ?>
+					<? echo JHTML::_('grid.sort', JText::_('COM_SUBTEXT_LIST_ACCESS_LABEL'), 's.access', $this->filter->filter_order_Dir, $this->filter->filter_order, 'subtext.filter'); ?>
 				</th>
 				<th>
 					<? echo JText::_('COM_SUBTEXT_LIST_DESCRIPTION_LABEL'); ?>

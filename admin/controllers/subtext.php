@@ -35,6 +35,18 @@ class SubtextControllerSubtext extends JControllerForm
 		$this->registerTask('unpublish', 'publish');
 	}
 	/**
+	 * A convenience method for filtering lists.
+	 *
+	 * @return  void
+	 */
+	public function filter()
+	{
+		$model = $this->getModel();
+		$model->getFilter();
+		$this->setRedirect(JRoute::_("index.php?option=com_subtext&view=".$this->view_list, false));
+		return true;
+	}
+	/**
 	 * Removes an item.
 	 *
 	 * @return  void
