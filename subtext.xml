@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="2.5" method="new">
+<extension type="component" version="2.5" method="upgrade">
 	<name>COM_SUBTEXT</name>
 	<creationDate>2012-03-23</creationDate>
 	<author>Alonzo C. Turner</author>
@@ -7,8 +7,9 @@
 	<authorEmail>alonzo.turner@subtextproductions.com</authorEmail>
 	<copyright>COM_SUBTEXT_COMPONENT_COPYRIGHT</copyright>
 	<license>COM_SUBTEXT_COMPONENT_LICENSE</license>
-	<version>1.0</version>
+	<version>1.0.1</version>
 	<description><![CDATA[COM_SUBTEXT_COMPONENT_DESCRIPTION]]></description>
+	<scriptfile>install.php</scriptfile>
 	<install>
 		<sql>
 			<file driver="mysqli" charset="utf8">sql/install.mysqli.utf8.sql</file>
@@ -21,7 +22,7 @@
 	</uninstall>
 	<update>
 		<schemas>
-			<schemapath type="mysqli">sql/updates/mysqli</schemapath>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
 		</schemas>
 	</update>
 	<files folder="site">
