@@ -13,7 +13,7 @@ defined('_JEXEC') or die();
 // REQUIRE THE BASE MODEL
 jimport( 'joomla.application.component.model' );
 
-class SubtextModelSubtext extends JModel
+class SubtextModelSubtext extends JModelLegacy
 {
  	function __construct(){
 		parent::__construct();

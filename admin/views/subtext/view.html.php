@@ -12,7 +12,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 jimport( 'joomla.application.component.view' );
 
-class SubtextViewSubtext extends JView
+class SubtextViewSubtext extends JViewLegacy
 {
 	/**
 	 * Subtext view display method

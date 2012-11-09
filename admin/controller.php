@@ -18,7 +18,7 @@ if(!JFactory::getUser()->authorise('core.manage', 'com_subtext')){
 // IMPORT CONTROLLER LIBRARY
 jimport('joomla.application.component.controller');
 
-class SubtextController extends JController
+class SubtextController extends JControllerLegacy
 {
 	/**
 	 * constructor (registers additional tasks to methods)

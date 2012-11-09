@@ -10,7 +10,7 @@
 // REQUIRE THE BASE VIEW
 jimport( 'joomla.application.component.view');
 
-class SubtextViewSubtext extends JView
+class SubtextViewSubtext extends JViewLegacy
 {
 	function display($tpl = null)
 	{

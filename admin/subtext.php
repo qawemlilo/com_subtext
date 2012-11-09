@@ -21,7 +21,7 @@ JLoader::register('SubtextHelper', dirname(__FILE__).DS.'helpers'.DS.'subtext.ph
 jimport('joomla.application.component.controller');
 
 // GET CONTROLLER INSTANCE
-$controller = JController::getInstance('Subtext');
+$controller = JControllerLegacy::getInstance('Subtext');
 
 // PERFORM THE REQUESTED TASK
 $controller->execute(JRequest::getCmd('task'));
