@@ -9,6 +9,9 @@
 // NO DIRECT ACCESS
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
+// DEFINE DS CONSTANT
+define( 'DS', '/' );
+
 // PRIVILEGE CHECK
 if(!JFactory::getUser()->authorise('core.manage', 'com_subtext')){
 	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
