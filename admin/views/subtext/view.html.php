@@ -20,7 +20,7 @@ class SubtextViewSubtext extends JViewLegacy
 	 **/
 	function display($tpl = null)
 	{
-		$layout = JRequest::getVar('layout', 'list', 'get', STRING);
+		$layout = JRequest::getVar('layout', 'list', 'get', 'string');
 		switch($layout){
 		case "list":
 			JToolBarHelper::title(JText::_('COM_SUBTEXT_VIEW_SUBTEXT_LIST_TITLE'), 'generic.png');
