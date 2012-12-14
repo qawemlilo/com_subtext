@@ -36,7 +36,7 @@ class SubtextModelSubtext extends JModelLegacy
 			$this->_db->setQuery($sql);
 			$this->_data = $this->_db->loadObject();
 			$params = new JRegistry();
-			$params->loadJSON($this->_data->attribs);
+			$params->loadString($this->_data->attribs);
 			$this->_data->params = $params;
 		}else{
 			JError::raiseError(404, JText::_('COM_SUBTEXT_MSG_ERROR_404'));
