@@ -76,7 +76,7 @@
 				</td>
 				<td  nowrap="nowrap">
 					<?
-					if(JTable::isCheckedOut($user->get('id'), $row->checked_out)){
+					if(JTable::isCheckedOut(JFactory::getUser()->get('id'), $row->checked_out)){
 						echo JHTML::_('grid.checkedout', $row, $i, 'subtext_id');
 						echo JText::_( $row->subtext_name);
 					}else{
