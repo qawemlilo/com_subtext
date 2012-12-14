@@ -15,6 +15,9 @@ if(!JFactory::getUser()->authorise('core.manage', 'com_subtext')){
 	return JError::raiseWarning(403, JText::_('JERROR_ALERTNOAUTHOR'));
 }
 
+// IMPORT CONTROLLER LIBRARY
+jimport('joomla.application.component.controllerform');
+
 class SubtextControllerSubtext extends JControllerForm
 {
 	/**
