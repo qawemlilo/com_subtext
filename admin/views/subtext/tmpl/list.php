@@ -3,12 +3,14 @@
 	JHtml::_('behavior.modal');
 	JHtml::_('behavior.tooltip');
 	JHtml::_('behavior.formvalidation');
-	$user	= JFactory::getUser();
-	$uri	= JURI::getInstance();
+	$uri = JURI::getInstance();
 	$base = $uri->root();
+	if(JFactory::getApplication()->getTemplate() == "isis"){
+		echo $this->loadTemplate('isis');
+	}else{
 ?>
 
-<form action="index.php" method="post" name="adminForm">
+<form action="index.php" method="post" name="adminForm" id="adminForm">
 	<input type="hidden" name="option" value="com_subtext" />
 	<input type="hidden" name="scope" value="" />
 	<input type="hidden" name="task" value="subtext.filter" />
@@ -17,11 +19,11 @@
 	<input type="hidden" name="filter_order" value="<? echo $this->filter->filter_order; ?>" />
 	<input type="hidden" name="filter_order_Dir" value="<? echo $this->filter->filter_order_Dir; ?>" />
 	<? echo JHTML::_('form.token')."\n"; ?>
-	<table>
+	<table class="table table-bordered">
 		<tr>
 			<td width="100%">
-				<? echo JText::_('COM_SUBTEXT_FILTER_SEARCH_LABEL'); ?>
-				<input type="text" name="filter_search" id="filter-search_" value="<? echo $this->filter->filter_search; ?>" />
+				<label for=""><? echo JText::_('COM_SUBTEXT_FILTER_SEARCH_LABEL'); ?></label>
+				<input type="text" name="filter_search" id="filter-search_" class="input-small" value="<? echo $this->filter->filter_search; ?>" />
 				<input type="button" name="submit_button" id="submit-button_" value="Go" onclick="document.forms.adminForm.task.value='filter';document.forms.adminForm.submit();"/>
 				<input type="button" name="reset_button" id="reset-button_" value="Reset" onclick="document.forms.adminForm.filter_search.value='';document.forms.adminForm.task.value='filter';document.forms.adminForm.submit();"/>
 			</td>
@@ -34,20 +36,20 @@
 					<? echo JText::_('Num'); ?>
 				</th>
 				<th width="5">
-					<input type="checkbox" name="toggle" value="" onclick="checkAll(<? echo count( $this->items ); ?>);" />
+					<input type="checkbox" name="checkall-toggle" value="" title="<?php echo JText::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this);" />
 				</th>
 				<th class="title" nowrap="nowrap">
-					<? echo JHTML::_('grid.sort', JText::_('COM_SUBTEXT_LIST_SUBTEXT_NAME_LABEL'), 'subtext_name', $this->filter->filter_order_Dir, $this->filter->filter_order, 'subtext.filter'); ?>
+					<? echo JHTML::_('grid.sort', 'COM_SUBTEXT_LIST_SUBTEXT_NAME_LABEL', 'subtext_name', $this->filter->filter_order_Dir, $this->filter->filter_order, 'subtext.filter'); ?>
 				</th>
 				<th width="5%" nowrap="nowrap">
-					<? echo JHTML::_('grid.sort', JText::_('COM_SUBTEXT_LIST_PUBLISHED_LABEL'), 'published', $this->filter->filter_order_Dir, $this->filter->filter_order, 'subtext.filter'); ?>
+					<? echo JHTML::_('grid.sort', 'COM_SUBTEXT_LIST_PUBLISHED_LABEL', 'published', $this->filter->filter_order_Dir, $this->filter->filter_order, 'subtext.filter'); ?>
 				</th>
 				<th width="10%" nowrap="nowrap">
-					<? echo JHTML::_('grid.sort', JText::_('COM_SUBTEXT_LIST_ORDERING_LABEL'), 'ordering', $this->filter->filter_order_Dir, $this->filter->filter_order, 'subtext.filter');?>
+					<? echo JHTML::_('grid.sort', 'COM_SUBTEXT_LIST_ORDERING_LABEL', 'ordering', $this->filter->filter_order_Dir, $this->filter->filter_order, 'subtext.filter');?>
 					<? echo JHTML::_('grid.order', $this->items, 'filesave.png', 'subtext.saveorder'); ?>
 				</th>
 				<th nowrap="nowrap">
-					<? echo JHTML::_('grid.sort', JText::_('COM_SUBTEXT_LIST_ACCESS_LABEL'), 's.access', $this->filter->filter_order_Dir, $this->filter->filter_order, 'subtext.filter'); ?>
+					<? echo JHTML::_('grid.sort', 'COM_SUBTEXT_LIST_ACCESS_LABEL', 's.access', $this->filter->filter_order_Dir, $this->filter->filter_order, 'subtext.filter'); ?>
 				</th>
 				<th>
 					<? echo JText::_('COM_SUBTEXT_LIST_DESCRIPTION_LABEL'); ?>
@@ -63,7 +65,7 @@
 		for($i=0; $i < count($this->items); $i++){
 			$row		= $this->items[$i];
 			$checked	= JHTML::_('grid.id', $i, $row->subtext_id);
-			$link		= JRoute::_('index.php?option=com_subtext&task=subtext.edit&subtext_id='. $row->subtext_id.'&'.JUtility::getToken().'=1');
+			$link		= JRoute::_('index.php?option=com_subtext&task=subtext.edit&subtext_id='. $row->subtext_id.'&'.JSession::getFormToken().'=1');
 			?>
 			<tr class="row<? echo $k; ?>">
 				<td>
@@ -74,7 +76,7 @@
 				</td>
 				<td  nowrap="nowrap">
 					<?
-					if(JTable::isCheckedOut($user->get('id'), $row->checked_out)){
+					if(JTable::isCheckedOut(JFactory::getUser()->get('id'), $row->checked_out)){
 						echo JHTML::_('grid.checkedout', $row, $i, 'subtext_id');
 						echo JText::_( $row->subtext_name);
 					}else{
@@ -114,3 +116,4 @@
 		</tfoot>
 	</table>
 </form>
+<?php } ?>

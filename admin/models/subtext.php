@@ -76,7 +76,7 @@ class SubtextModelSubtext extends JModelAdmin
 		$db->setQuery($query);
 		$this->_data = $db->loadAssoc();
 		$ini = new JRegistry();
-		$ini->loadINI($data['attribs']);
+		$ini->loadString($data['attribs']);
 		$this->_data['params'] = $ini->toArray();
 
 		return $this->_data;

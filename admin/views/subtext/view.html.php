@@ -12,7 +12,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 jimport( 'joomla.application.component.view' );
 
-class SubtextViewSubtext extends JView
+class SubtextViewSubtext extends JViewLegacy
 {
 	/**
 	 * Subtext view display method
@@ -20,13 +20,13 @@ class SubtextViewSubtext extends JView
 	 **/
 	function display($tpl = null)
 	{
-		$layout = JRequest::getVar('layout', 'list', 'get', STRING);
+		$layout = JRequest::getVar('layout', 'list', 'get', 'string');
 		switch($layout){
 		case "list":
 			JToolBarHelper::title(JText::_('COM_SUBTEXT_VIEW_SUBTEXT_LIST_TITLE'), 'generic.png');
-			JToolBarHelper::addNewX('subtext.add');
-			JToolBarHelper::editListX('subtext.edit');
-			JToolBarHelper::deleteListX(JText::_('COM_SUBTEXT_MSG_DELETE_CONFIRM'), 'subtext.delete');
+			JToolBarHelper::addNew('subtext.add', 'JTOOLBAR_NEW');
+			JToolBarHelper::editList('subtext.edit', 'JTOOLBAR_EDIT', true);
+			JToolBarHelper::deleteList(JText::_('COM_SUBTEXT_MSG_DELETE_CONFIRM'), 'subtext.delete', 'JTOOLBAR_DELETE', true);
 			JToolBarHelper::preferences('com_subtext', '500');
 			// GET DATA FROM THE MODEL
 			$this->filter = $this->get('Filter');

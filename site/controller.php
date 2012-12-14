@@ -10,10 +10,7 @@
 // NO DIRECT ACCESS
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
-// IMPORT CONTROLLER LIBRARY
-jimport('joomla.application.component.controllerform');
-
-class SubtextController extends JController
+class SubtextController extends JControllerLegacy
 {
 	/**
 	 * Method to display the view

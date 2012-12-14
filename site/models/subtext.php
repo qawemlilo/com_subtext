@@ -13,7 +13,7 @@ defined('_JEXEC') or die();
 // REQUIRE THE BASE MODEL
 jimport( 'joomla.application.component.model' );
 
-class SubtextModelSubtext extends JModel
+class SubtextModelSubtext extends JModelLegacy
 {
  	function __construct(){
 		parent::__construct();
@@ -36,7 +36,7 @@ class SubtextModelSubtext extends JModel
 			$this->_db->setQuery($sql);
 			$this->_data = $this->_db->loadObject();
 			$params = new JRegistry();
-			$params->loadJSON($this->_data->attribs);
+			$params->loadString($this->_data->attribs);
 			$this->_data->params = $params;
 		}else{
 			JError::raiseError(404, JText::_('COM_SUBTEXT_MSG_ERROR_404'));
