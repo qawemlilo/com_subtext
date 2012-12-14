@@ -10,7 +10,7 @@
 			<field name="subtext_description" type="editor" filter="safehtml" label="COM_SUBTEXT_SUBTEXT_DESCRIPTION_LABEL" description="COM_SUBTEXT_SUBTEXT_DESCRIPTION_DESC" />
 		</fieldset>
 		<fieldset name="options">
-			<field name="published" type="radio" filter="uint" class="validate-uint" required="true" default="1" label="COM_SUBTEXT_PUBLISHED_LABEL" description="COM_SUBTEXT_PUBLISHED_DESC">
+			<field name="published" type="radio" filter="uint" class="radio btn-group validate-uint" required="true" default="1" label="COM_SUBTEXT_PUBLISHED_LABEL" description="COM_SUBTEXT_PUBLISHED_DESC">
 				<option value="1">COM_SUBTEXT_BOOLEAN_TRUE</option>
 				<option value="0">COM_SUBTEXT_BOOLEAN_FALSE</option>
 			</field>
