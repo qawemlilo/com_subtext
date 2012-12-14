@@ -92,7 +92,7 @@
 					<? echo $row->access; ?>
 				</td>
 				<td>
-					<? echo strip_tags($row->subtext_description); ?>
+					<? echo implode(" ", array_splice(explode(" ", strip_tags($row->subtext_description)), 0, 55)); ?>
 				</td>
 				<td>
 					<? echo $row->subtext_id; ?>
