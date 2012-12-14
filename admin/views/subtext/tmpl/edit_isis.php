@@ -1,13 +1,8 @@
 <?php
 	defined('_JEXEC') or die('Restricted access');
-	$uri = JURI::getInstance();
-	$base = $uri->root();
-	if(JFactory::getApplication()->getTemplate() == "isis"){
-		echo $this->loadTemplate('isis');
-	}else{
-		JHtml::_('behavior.modal');
-		JHtml::_('behavior.tooltip');
-		JHtml::_('behavior.formvalidation');
+	JHtml::_('behavior.modal');
+	JHtml::_('behavior.tooltip');
+	JHtml::_('behavior.formvalidation');
 ?>
 
 <script type="text/javascript">
@@ -52,7 +47,7 @@
 	<input type="hidden" name="subtext_id" value="<? echo $this->form->getValue('subtext_id'); ?>" />
 	<? echo JHTML::_('form.token')."\n"; ?>
 	<div id="editcell">
-		<div class="width-60 fltlft">
+		<div class="span9 pull-left">
 			<fieldset class="adminform">
 				<legend><?php echo JText::_('COM_SUBTEXT_FORM_LEGEND_BASIC'); ?></legend>
 				<dl>
@@ -67,7 +62,7 @@
 				<?php echo $this->form->getInput('subtext_description'); ?>
 			</fieldset>
 		</div>
-		<div class="width-40 fltlft">
+		<div class="span3 pull-left">
 			<fieldset class="adminform">
 				<legend><?php echo JText::_('COM_SUBTEXT_FORM_LEGEND_OPTIONS'); ?></legend>
 				<dl>
@@ -98,5 +93,3 @@
 		</div>
 	</div>
 </form>
-<?php }
-
