@@ -6,7 +6,7 @@
 	$uri = JURI::getInstance();
 	$base = $uri->root();
 	if(JFactory::getApplication()->getTemplate() == "isis"){
-		$this->loadTemplate('isis');
+		echo $this->loadTemplate('isis');
 	}else{
 ?>
 
