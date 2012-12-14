@@ -8,7 +8,7 @@
 	$base = $uri->root();
 ?>
 
-<form action="index.php" method="post" name="adminForm">
+<form action="index.php" method="post" name="adminForm" id="adminForm">
 	<input type="hidden" name="option" value="com_subtext" />
 	<input type="hidden" name="scope" value="" />
 	<input type="hidden" name="task" value="subtext.filter" />

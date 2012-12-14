@@ -40,7 +40,7 @@
 	}
 //]]>
 </script>
-<form action="index.php" method="post" name="adminForm" enctype="multipart/form-data">
+<form action="index.php" method="post" name="adminForm" id="adminForm" enctype="multipart/form-data">
 	<input type="hidden" name="option" value="com_subtext" />
 	<input type="hidden" name="task" value="" />
 	<input type="hidden" name="chosen" value="" />
