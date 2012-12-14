@@ -10,7 +10,7 @@
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
 // DEFINE DS CONSTANT
-define( 'DS', '/' );
+if(!defined('DS')) define( 'DS', 'DIRECTORY_SEPARATOR' );
 
 // PRIVILEGE CHECK
 if(!JFactory::getUser()->authorise('core.manage', 'com_subtext')){
