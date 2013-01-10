@@ -28,7 +28,7 @@ class com_subtextInstallerScript
 			$oldRelease = $this->getParam('version');
 			$rel = $oldRelease . ' to ' . $this->release;
 			if ( version_compare( $this->release, $oldRelease, 'le' ) ) {
-				JFactory::getApplication()->enqueueMessage(JText::_('COM_SUBTEXT_MSG_ERROR_SCHEMA'), 'error');
+				JFactory::getApplication()->enqueueMessage(JText::sprintf('COM_SUBTEXT_MSG_ERROR_SCHEMA', $this->release), 'error');
 				return false;
 			}
 		}
