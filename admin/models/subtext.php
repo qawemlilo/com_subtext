@@ -16,23 +16,31 @@ class SubtextModelSubtext extends JModelAdmin
 {
     /**
      * Database records data
+     *
      * @var mixed This may be an object or array depending on context.
      */
     var $_data			= null;
+
     /**
      * Total number of records retrieved
+     *
      * @var integer
      */
      var $_total		= null;
+
     /**
      * Pagination object
+     *
      * @var object
      */
      var $_pagination	= null;
  
     /**
      * Retrieves the Item data
-     * @return object A stdClass object containing the data for a single record.
+     *
+     * @return	object	A stdClass object containing the data for a single record.
+     *
+     * @since 1.0
      */
     public function getData()
     {
@@ -44,11 +52,16 @@ class SubtextModelSubtext extends JModelAdmin
 
         return $this->_data;
     }
+
 	/**
 	 * Method for getting the form from the model.
+	 *
 	 * @param   array    $data      Data for the form.
 	 * @param   boolean  $loadData  True if the form is to load its own data (default case), false if not.
+	 *
 	 * @return  mixed  A JForm object on success, false on failure
+	 *
+	 * @since   1.0
 	 */
 	public function getForm($data = array(), $loadData = true)
 	{
@@ -58,9 +71,13 @@ class SubtextModelSubtext extends JModelAdmin
 		JError::raiseError(0, JText::sprintf('JLIB_FORM_INVALID_FORM_OBJECT', 'subtext'));
 		return null;
 	}
+
 	/**
 	 * Method to get the data that should be injected in the form.
-	 * @return  array    The default data is an empty array.
+	 *
+	 * @return  array    Load default data based on cid.
+	 *
+	 * @since   1.0
 	 */
 	protected function loadFormData()
 	{
@@ -82,8 +99,11 @@ class SubtextModelSubtext extends JModelAdmin
 		return $this->_data;
 	}
     /**
-     * Retrieves the Item data list
-     * @return array Array of objects containing the data from the database.
+     * Method to retrieve the item data list
+     *
+     * @return	array	Array of objects containing the data from the database.
+     *
+     * @since	1.0
      */
     public function getList()
     {
@@ -113,31 +133,38 @@ class SubtextModelSubtext extends JModelAdmin
 
     	return $this->_data;
     }
-    /**
-     * Retrieve filter variables from User State
-     * @return object
-     */
-    public function getFilter()
-    {
-    	$mainframe	= JFactory::getApplication();
-		$option		= JRequest::getCmd('option', 'com_subtext');
-    	$scope		= $this->getName();
-    	$obj		= new stdClass();
- 		$limit		= $mainframe->getUserStateFromRequest($option.'.'.$scope.'.limit', 'limit', $mainframe->getCfg('list_limit'), 'int');
- 		$limitstart	= $mainframe->getUserStateFromRequest($option.'.'.$scope.'.limitstart', 'limitstart', 0, 'int');
-  		$limitstart	= ($limit != 0 ? (floor($limitstart / $limit) * $limit) : 0);
-  
-  		$this->setState('limit', $limit);
-  		$this->setState('limitstart', $limitstart);
 
-    	$obj->filter_search			= $mainframe->getUserStateFromRequest($option.'.'.$scope.'.filter_search', 'filter_search', '', 'string');
-    	$obj->filter_order			= $mainframe->getUserStateFromRequest($option.'.'.$scope.'.filter_order', 'filter_order', 'ordering', 'cmd');
-    	$obj->filter_order_Dir		= $mainframe->getUserStateFromRequest($option.'.'.$scope.'.filter_order_Dir', 'filter_order_Dir', 'asc', 'string');
-    	return $obj;
-    }
+	/**
+	 * Method to auto-populate the model state.
+	 *
+	 * This method should only be called once per instantiation and is designed
+	 * to be called on the first call to the getState() method unless the model
+	 * configuration flag to ignore the request is set.
+	 *
+	 * @return  void
+	 *
+	 * @note    Calling getState in this method will result in recursion.
+	 * @since   1.0
+	 */
+	 protected function populateState()
+	 {
+	 	$app	= JFactory::getApplication();
+	 	$option	= $app->input->get('option', 'com_subtext', 'CMD');
+	 	$scope	= $this->getName();
+
+  		$this->setState('limit', $app->getUserStateFromRequest($option.'.'.$scope.'.limit', 'limit', $app->getCfg('list_limit'), 'int'));
+  		$this->setState('limitstart', $app->getUserStateFromRequest($option.'.'.$scope.'.limitstart', 'limitstart', 0, 'int'));
+  		$this->setState('filter_search', $app->getUserStateFromRequest($option.'.'.$scope.'.filter_search', 'filter_search', '', 'string'));
+  		$this->setState('filter_order', $app->getUserStateFromRequest($option.'.'.$scope.'.filter_order', 'filter_order', 'ordering', 'cmd'));
+  		$this->setState('filter_order_Dir', $app->getUserStateFromRequest($option.'.'.$scope.'.filter_order_Dir', 'filter_order_Dir', 'asc', 'string'));
+	 }
+
     /**
-     * Retrieves a JPagination object
-     * @return object
+     * Method to retrieve a JPagination object
+     *
+     * @return	object	a JPagination object
+     *
+     * @since	1.0
      */
     public function getPagination()
     {
@@ -150,7 +177,10 @@ class SubtextModelSubtext extends JModelAdmin
     }
 	/**
 	 * A utility method for retrieving an item Id
-	 * @return int
+	 *
+	 * @return	int	the primary key
+	 *
+	 * @since	1.0
 	 */
 	protected function _getCid(){
 		$row = $this->getTable();

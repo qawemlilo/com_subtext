@@ -29,7 +29,7 @@ class SubtextViewSubtext extends JViewLegacy
 			JToolBarHelper::deleteList(JText::_('COM_SUBTEXT_MSG_DELETE_CONFIRM'), 'subtext.delete', 'JTOOLBAR_DELETE', true);
 			JToolBarHelper::preferences('com_subtext', '500');
 			// GET DATA FROM THE MODEL
-			$this->filter = $this->get('Filter');
+			$this->filter = $this->get('State');
 			$this->items = $this->get('List');
 			$this->page = $this->get('Pagination');
 			break;
