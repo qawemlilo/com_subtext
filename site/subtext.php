@@ -12,7 +12,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 $controller = JControllerLegacy::getInstance('Subtext');
 
 // PERFORM THE REQUESTED TASK
-$controller->execute(JRequest::getCmd('task'));
+$controller->execute(JFactory::getApplication()->input->get('task'));
 
 // REDIRECT IF NECESSARY
 $controller->redirect();

@@ -24,8 +24,9 @@ class SubtextController extends JControllerLegacy
 	public function __construct($config = array())
 	{
 		// DEFAULT LAYOUT TO LIST INSTEAD OF DEFAULT
-		$layout = JRequest::getVar('layout', 'list', 'get', 'string');
-		JRequest::setVar('layout', $layout);
+		$input = JFactory::getApplication()->input;
+		$layout = $input->get->get('layout', 'list', 'cmd');
+		$input->get->set('layout', $layout);
 		parent::__construct();
 	}
 	

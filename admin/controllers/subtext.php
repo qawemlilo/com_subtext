@@ -57,7 +57,8 @@ class SubtextControllerSubtext extends JControllerForm
 		JSession::checkToken() or die(JText::_('JINVALID_TOKEN'));
 
 		// GET ITEMS TO REMOVE FROM THE REQUEST.
-		$cid = JRequest::getVar('cid', array(), '', 'array');
+		$input = JFactory::getApplication()->input;
+		$cid = $input->get('cid', array(), 'array');
 
 		if (!is_array($cid) || count($cid) < 1)
 		{
@@ -96,7 +97,8 @@ class SubtextControllerSubtext extends JControllerForm
 		JSession::checkToken() or die(JText::_('JINVALID_TOKEN'));
 
 		// GET ITEMS TO PUBLISH FROM THE REQUEST.
-		$cid = JRequest::getVar('cid', array(), '', 'array');
+		$input = JFactory::getApplication()->input;
+		$cid = $input->get('cid', array(), 'array');
 		$data = array('publish' => 1, 'unpublish' => 0, 'archive' => 2, 'trash' => -2, 'report' => -3);
 		$task = $this->getTask();
 		$value = JArrayHelper::getValue($data, $task, 0, 'int');
@@ -139,8 +141,8 @@ class SubtextControllerSubtext extends JControllerForm
 				$this->setMessage(JText::plural($ntext, count($cid)));
 			}
 		}
-		$extension = JRequest::getCmd('extension');
-		$extensionURL = ($extension) ? '&extension=' . JRequest::getCmd('extension') : '';
+		$extension = $input->get('extension', null, 'cmd');
+		$extensionURL = ($extension) ? '&extension=' . $extension : '';
 		$this->setRedirect(JRoute::_('index.php?option=' . $this->option . '&view=' . $this->view_list . $extensionURL, false));
 	}
 	/**
@@ -154,7 +156,8 @@ class SubtextControllerSubtext extends JControllerForm
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
 		// INITIALIZE VARIABLES.
-		$ids = JRequest::getVar('cid', null, 'post', 'array');
+		$input = JFactory::getApplication()->input;
+		$ids = $input->post->get('cid', null, 'array');
 		$inc = ($this->getTask() == 'orderup') ? -1 : +1;
 
 		$model = $this->getModel();
@@ -185,8 +188,9 @@ class SubtextControllerSubtext extends JControllerForm
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
 		// GET THE INPUT
-		$pks = JRequest::getVar('cid', null, 'post', 'array');
-		$order = JRequest::getVar('order', null, 'post', 'array');
+		$input = JFactory::getApplication()->input;
+		$pks = $input->post->get('cid', null, 'array');
+		$order = $input->post->get('order', null, 'array');
 
 		// SANITIZE THE INPUT
 		JArrayHelper::toInteger($pks);
@@ -224,7 +228,8 @@ class SubtextControllerSubtext extends JControllerForm
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
 		// INITIALIZE VARIABLES.
-		$ids = JRequest::getVar('cid', null, 'post', 'array');
+		$input = JFactory::getApplication()->input;
+		$ids = $input->get('cid', null, 'array');
 
 		$model = $this->getModel();
 		$return = $model->checkin($ids);
