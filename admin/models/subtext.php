@@ -108,7 +108,7 @@ class SubtextModelSubtext extends JModelAdmin
     public function getList()
     {
     	$mainframe	= JFactory::getApplication();
-		$option		= JRequest::getCmd('option', 'com_subtext');
+		$option		= $mainframe->input->get('option', 'com_subtext');
     	$scope		= $this->getName();
     	$row		= $this->getTable();
     	$filter		= array();
@@ -184,6 +184,6 @@ class SubtextModelSubtext extends JModelAdmin
 	 */
 	protected function _getCid(){
 		$row = $this->getTable();
-		return JRequest::getInt($row->getKeyName(),  0, 'method');
+		return JFactory::getApplication()->input->get($row->getKeyName(), 0, 'int');
 	}
 }

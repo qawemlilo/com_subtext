@@ -27,7 +27,7 @@ class SubtextModelSubtext extends JModelLegacy
     public function getData()
     {
     	$levels	= $this->getState('levels');
-		$id 	= JRequest::getInt('id',  0);
+		$id 	= JFactory::getApplication()->input->get('id', 0, 'int');
 		$sql	= "SELECT * FROM `#__subtext` ".
 		"WHERE `subtext_id` = {$id} ".
 		"AND `published` = 1 ".

@@ -27,7 +27,7 @@ jimport('joomla.application.component.controller');
 $controller = JControllerLegacy::getInstance('Subtext');
 
 // PERFORM THE REQUESTED TASK
-$controller->execute(JRequest::getCmd('task'));
+$controller->execute(JFactory::getApplication()->input->get('task'));
 
 // REDIRECT IF NECESSARY
 $controller->redirect();
