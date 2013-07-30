@@ -1,6 +1,14 @@
 <?php
-// No direct access to this file
-defined('_JEXEC') or die('Restricted access');
+/**
+ * @package     Subtext
+ * @subpackage  Install
+ *
+ * @copyright   Copyright (C) 2007 - 2013 Subtext Productions. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
+ */
+
+// NO DIRECT ACCESS
+defined('JPATH_PLATFORM') or die;
  
 class com_subtextInstallerScript
 {
