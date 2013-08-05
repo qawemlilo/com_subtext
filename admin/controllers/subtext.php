@@ -98,7 +98,7 @@ class SubtextControllerSubtext extends JControllerForm
 
 		// GET ITEMS TO PUBLISH FROM THE REQUEST.
 		$input = JFactory::getApplication()->input;
-		$cid = $input->get('cid', array(), '', 'array');
+		$cid = $input->get('cid', array(), 'array');
 		$data = array('publish' => 1, 'unpublish' => 0, 'archive' => 2, 'trash' => -2, 'report' => -3);
 		$task = $this->getTask();
 		$value = JArrayHelper::getValue($data, $task, 0, 'int');
@@ -141,7 +141,7 @@ class SubtextControllerSubtext extends JControllerForm
 				$this->setMessage(JText::plural($ntext, count($cid)));
 			}
 		}
-		$extension = $input->get('extension', '', 'cmd');
+		$extension = $input->get('extension', null, 'cmd');
 		$extensionURL = ($extension) ? '&extension=' . $extension : '';
 		$this->setRedirect(JRoute::_('index.php?option=' . $this->option . '&view=' . $this->view_list . $extensionURL, false));
 	}
@@ -187,7 +187,7 @@ class SubtextControllerSubtext extends JControllerForm
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
 		// GET THE INPUT
-		$input = JFactory::getApplication();
+		$input = JFactory::getApplication()->input;
 		$pks = $input->post->get('cid', null, 'array');
 		$order = $input->post->get('order', null, 'array');
 

@@ -21,7 +21,7 @@ class SubtextViewSubtext extends JViewLegacy
 	function display($tpl = null)
 	{
 		$input = JFactory::getApplication()->input;
-		$layout = $input->get('layout', 'list', 'string');
+		$layout = $input->get->get('layout', 'list', 'string');
 		$this->setLayout($layout);
 		switch($layout){
 		case "list":
