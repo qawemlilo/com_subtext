@@ -49,8 +49,8 @@
 	<input type="hidden" name="chosen" value="" />
 	<input type="hidden" name="boxchecked" value="0" />
 	<input type="hidden" name="hidemainmenu" value="0" />
-	<input type="hidden" name="subtext_id" value="<? echo $this->form->getValue('subtext_id'); ?>" />
-	<? echo JHTML::_('form.token')."\n"; ?>
+	<input type="hidden" name="subtext_id" value="<?php echo $this->form->getValue('subtext_id'); ?>" />
+	<?php echo JHTML::_('form.token')."\n"; ?>
 	<div id="editcell">
 		<div class="width-60 fltlft">
 			<fieldset class="adminform">
