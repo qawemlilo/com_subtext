@@ -19,4 +19,3 @@ class SubtextViewSubtext extends JViewLegacy
 		parent::display($tpl);
 	}
 }
-?>

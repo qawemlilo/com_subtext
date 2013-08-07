@@ -64,4 +64,3 @@ class TableSubtext extends JTable
 		return true;
 	}
 }
-?>
