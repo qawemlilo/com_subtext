@@ -70,7 +70,7 @@ class com_subtextInstallerScript
 	 * UNINSTALL
 	 */
 	function uninstall( $parent ) {
-		if(!$this->release) $this->release = '1.0.1';
+		if(!isset($this->release)) $this->release = '1.0.1';
 		echo '<p>' . JText::sprintf('COM_SUBTEXT_MSG_SUCCESS_UNINSTALL', $this->release) . '</p>';
 	}
  
