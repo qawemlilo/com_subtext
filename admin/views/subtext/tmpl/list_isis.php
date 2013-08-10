@@ -2,6 +2,8 @@
 	JHtml::_('behavior.multiselect');
 	JHtml::_('formbehavior.chosen', 'select');
 	JHtml::_('bootstrap.tooltip');
+	$user = JFactory::getUser();
+	$user_id = $user->get('id');
 ?>
 <form action="index.php" method="post" name="adminForm" id="adminForm">
 	<input type="hidden" name="option" value="com_subtext" />
@@ -60,6 +62,11 @@
 			$row		= $this->items[$i];
 			$checked	= JHtml::_('grid.id', $i, $row->subtext_id);
 			$link		= JRoute::_('index.php?option=com_subtext&task=subtext.edit&subtext_id='. $row->subtext_id.'&'.JSession::getFormToken().'=1');
+			$canCreate  = $user->authorise('core.create',     'com_subtext');
+			$canEdit    = $user->authorise('core.edit',       'com_subtext');
+			$canCheckin = $user->authorise('core.manage',     'com_checkin') || $row->checked_out == $user_id || $row->checked_out == 0;
+			$canEditOwn = $user->authorise('core.edit.own',   'com_subtext');
+			$canChange  = $user->authorise('core.edit.state', 'com_subtext') && $canCheckin;
 			?>
 			<tr class="row<?php echo $k; ?>">
 				<td>
@@ -70,16 +77,20 @@
 				</td>
 				<td  class="nowrap">
 					<?php
-					if(JTable::isCheckedOut(JFactory::getUser()->get('id'), $row->checked_out)){
-						echo JHtml::_('grid.checkedout', $row, $i, 'subtext_id');
-						echo JText::_( $row->subtext_name);
+					if($row->checked_out){
+						echo JHtml::_('jgrid.checkedout', $i, $row->editor, $row->checked_out_time, 'subtext.', $canCheckin);
+						echo "<span class=\"title\">".JText::_( $row->subtext_name)."</span>";
 					}else{
-						echo "<a href=\"{$link}\">" . htmlspecialchars($row->subtext_name, ENT_QUOTES) . "</a>";
+						if($canEdit || $canEditOwn){
+							echo "<a href=\"{$link}\">" . htmlspecialchars($row->subtext_name, ENT_QUOTES) . "</a>";
+						}else{
+							echo "<span class=\"title\">".JText::_( $row->subtext_name)."</span>";
+						}
 					}
 					?>
 				</td>
 				<td align="center">
-					<?php echo JHtml::_('jgrid.published', $row->published, $i, 'subtext.', true, 'cb'); ?>
+					<?php echo JHtml::_('jgrid.published', $row->published, $i, 'subtext.', $canChange, 'cb'); ?>
 				</td>
 				<td class="order">
 					<div class="input-prepend input-append">
@@ -92,7 +103,7 @@
 					<?php echo $row->access; ?>
 				</td>
 				<td>
-					<?php echo implode(" ", array_splice(explode(" ", strip_tags($row->subtext_description)), 0, 55)); ?>
+					<?php $words = explode(" ", strip_tags($row->subtext_description)); echo implode(" ", array_splice($words, 0, 55)); ?>
 				</td>
 				<td>
 					<?php echo $row->subtext_id; ?>
