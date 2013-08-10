@@ -34,7 +34,20 @@ class SubtextModelSubtext extends JModelAdmin
      * @var object
      */
      var $_pagination	= null;
- 
+
+	/**
+	 * Constructor.
+	 *
+	 * @param   array  $config  An optional associative array of configuration settings.
+	 *
+	 * @see     JController
+	 * @since   11.1
+	 */
+	public function __construct($config = array())
+	{
+		parent::__construct($config);
+		$this->populateState();
+	}
     /**
      * Retrieves the Item data
      *

@@ -42,7 +42,7 @@ class SubtextControllerSubtext extends JControllerForm
 	public function filter()
 	{
 		$model = $this->getModel();
-		$model->getFilter();
+		$model->getState();
 		$this->setRedirect(JRoute::_("index.php?option=com_subtext&view=".$this->view_list, false));
 		return true;
 	}
