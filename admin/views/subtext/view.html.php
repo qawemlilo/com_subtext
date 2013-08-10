@@ -38,8 +38,9 @@ class SubtextViewSubtext extends JViewLegacy
 		default:
 			$input->set('hidemainmenu', 1);
 			JToolBarHelper::title(JText::_('COM_SUBTEXT_VIEW_SUBTEXT_EDIT_TITLE'), 'generic.png');
-			JToolBarHelper::save('subtext.save');
 			JToolBarHelper::apply('subtext.apply');
+			JToolBarHelper::save('subtext.save');
+			JToolBarHelper::save2new('subtext.save2new');
 			JToolBarHelper::cancel('subtext.cancel');
 			$this->form = $this->get('Form');
 			break;
