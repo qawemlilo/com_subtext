@@ -3,7 +3,7 @@
 	<fields>
 		<fieldset name="base">
 			<field name="subtext_id" type="hidden" filter="uint" />
-			<field name="subtext_name" type="text" class="validate-string" fitler="string" required="true" size="64" label="COM_SUBTEXT_SUBTEXT_NAME_LABEL" description="COM_SUBTEXT_SUBTEXT_NAME_DESC" />
+			<field name="subtext_name" type="text" class="validate-string" filter="string" required="true" size="64" label="COM_SUBTEXT_SUBTEXT_NAME_LABEL" description="COM_SUBTEXT_SUBTEXT_NAME_DESC" />
 			<field name="subtext_alias" type="text" class="validate-cmd" filter="cmd" required="true" size="64" label="COM_SUBTEXT_SUBTEXT_ALIAS_LABEL" description="COM_SUBTEXT_SUBTEXT_ALIAS_DESC" />
 		</fieldset>
 		<fieldset name="editor">
